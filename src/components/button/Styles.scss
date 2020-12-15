@@ -1,5 +1,8 @@
 @import '../../styles/utils/colors';
 
+$button-line-height: 50px;
+$button-padding: 3em;
+
 .submitButton{
   text-align: center;
   color: white;
@@ -8,10 +11,19 @@
   border-radius: 25px;
   font-weight: 600;
   background-color: $grass-blade;
-  padding: 0 2em;
+  padding: 0 $button-padding;
   cursor: pointer;
+  position: relative;
 
   &--inactive{
     background-color: $elephant-paw;
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    margin: 0 0.75em;
+    animation: spin linear infinite;
   }
 }
