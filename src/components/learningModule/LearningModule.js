@@ -70,7 +70,7 @@ const LearningModule = ({setGameStatus, gameStatus}) => {
               { possibleAnswers }
             </div>
             <div className="learningModule__submitButtonContainer">
-              <Button label="Submit" handleSubmit={ handleSubmit } iconClass={"fas fa-sync-alt"} isLoading={true}/>
+              <Button label="Submit" handleSubmit={ handleSubmit } iconClass={"fas fa-sync-alt"} isLoading={isLoading}/>
             </div>
           </div>
         </>
