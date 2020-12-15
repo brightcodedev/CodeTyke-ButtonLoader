@@ -13,5 +13,21 @@
 
   &--inactive{
     background-color: $elephant-paw;
+  } 
+
+  &__icon{
+    margin-left: 10px;
+    animation: spin 4s;
   }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+
+    }
+    to {
+      transform: rotate(359deg)
+    }
+  }
+
 }

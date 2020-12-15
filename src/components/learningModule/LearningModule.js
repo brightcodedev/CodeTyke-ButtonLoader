@@ -4,12 +4,16 @@ import SelectionBox from '../selectionBox/SelectionBox';
 import Button from '../button/Button';
 import Intro from '../intro/Intro';
 
+
+
+
 import './Styles.scss';
 
 const LearningModule = ({setGameStatus, gameStatus}) => {
   const [currentQuestionId, setCurrentQuestionId] = React.useState(0);
   const [quizData, setQuizData] = React.useState({});
   const [isComplete, setIsComplete] = React.useState(false);
+  const [loader, setLoader] = React.useState(false)
   
   let currentQuestion = quizData.questionArr ? quizData.questionArr[currentQuestionId]: {};
   
@@ -30,8 +34,10 @@ const LearningModule = ({setGameStatus, gameStatus}) => {
 
   const handleSubmit=()=> {
       if(currentQuestionId < quizData.totalQuestions-1){
+        setLoader(true)
         setTimeout(function(){
           setCurrentQuestionId(currentQuestionId+1);
+          setLoader(false)
         }, 700 );
     } else if (!isComplete) {
       setIsComplete(true);
@@ -67,7 +73,13 @@ const LearningModule = ({setGameStatus, gameStatus}) => {
               { possibleAnswers }
             </div>
             <div className="learningModule__submitButtonContainer">
-              <Button label="Submit" inactive handleSubmit={ handleSubmit } />
+              <Button label="Submit" 
+               inactive 
+               handleSubmit={ handleSubmit }
+               loader={loader}
+               />
+              
+               
             </div>
           </div>
         </>
