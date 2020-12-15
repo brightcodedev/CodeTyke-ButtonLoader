@@ -1,4 +1,5 @@
 @import '../../styles/utils/colors';
+// @import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 .submitButton{
   text-align: center;
@@ -10,8 +11,19 @@
   background-color: $grass-blade;
   padding: 0 2em;
   cursor: pointer;
+  display: flex;
+  flex: row;
+  justify-content: space-between;
 
   &--inactive{
     background-color: $elephant-paw;
+  }
+
+  &--loader svg{
+    // margin: 5px 5px;
+    padding-top: 5px;
+    height: 1.5rem;
+    width: 1.5rem;
+    color: #00BFFF;
   }
 }
