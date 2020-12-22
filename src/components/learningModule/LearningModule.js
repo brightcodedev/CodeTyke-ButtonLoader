@@ -4,10 +4,14 @@ import SelectionBox from '../selectionBox/SelectionBox';
 import Button from '../button/Button';
 import Intro from '../intro/Intro';
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+
 import './Styles.scss';
 
 const LearningModule = ({setGameStatus, gameStatus}) => {
   const [currentQuestionId, setCurrentQuestionId] = React.useState(0);
+  const [isLoading, setIsLoading] = React.useState(false);
   const [quizData, setQuizData] = React.useState({});
   const [isComplete, setIsComplete] = React.useState(false);
   
@@ -30,8 +34,10 @@ const LearningModule = ({setGameStatus, gameStatus}) => {
 
   const handleSubmit=()=> {
       if(currentQuestionId < quizData.totalQuestions-1){
+        setIsLoading(true)
         setTimeout(function(){
           setCurrentQuestionId(currentQuestionId+1);
+          setIsLoading(false)
         }, 700 );
     } else if (!isComplete) {
       setIsComplete(true);
@@ -67,7 +73,13 @@ const LearningModule = ({setGameStatus, gameStatus}) => {
               { possibleAnswers }
             </div>
             <div className="learningModule__submitButtonContainer">
-              <Button label="Submit" inactive handleSubmit={ handleSubmit } />
+              <Button 
+                label="Submit" 
+                inactive
+                isLoading={isLoading} 
+                customIcon={<FontAwesomeIcon icon={faCoffee} />}
+                handleSubmit={ handleSubmit } 
+              />
             </div>
           </div>
         </>
