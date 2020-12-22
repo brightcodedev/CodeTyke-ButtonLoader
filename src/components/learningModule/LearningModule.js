@@ -4,6 +4,9 @@ import SelectionBox from '../selectionBox/SelectionBox';
 import Button from '../button/Button';
 import Intro from '../intro/Intro';
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+
 import './Styles.scss';
 
 const LearningModule = ({setGameStatus, gameStatus}) => {
@@ -70,7 +73,13 @@ const LearningModule = ({setGameStatus, gameStatus}) => {
               { possibleAnswers }
             </div>
             <div className="learningModule__submitButtonContainer">
-              <Button label="Submit" isLoading={ isLoading } handleSubmit={ handleSubmit } />
+              <Button 
+                label="Submit" 
+                inactive
+                isLoading={isLoading} 
+                customIcon={<FontAwesomeIcon icon={faCoffee} />}
+                handleSubmit={ handleSubmit } 
+              />
             </div>
           </div>
         </>
