@@ -5,13 +5,19 @@ import './Styles.scss';
 
 const Button = ({ label, inactive, handleSubmit, isLoading, customIcon }) => {
 
-  let loaderIcon = <FontAwesomeIcon icon={faSync} className={`submitButton__iconLoader`} />
-  let displayIcon = isLoading && loaderIcon || customIcon
+  let icon; 
+  let loader = <FontAwesomeIcon icon={faSync} className={`submitButton__iconLoader`} />
+
+  if(isLoading) {
+    icon = loader;
+  } else if(customIcon) {
+    icon = customIcon;
+  }
 
   return (
     <div className={"submitButton " + (inactive ? "submitButton--inactive" : "")} onClick={handleSubmit} >
       {label} 
-      <span className="submitButton__icon">{displayIcon}</span>
+      <span className="submitButton__icon">{icon}</span>
     </div>
   )
 }
